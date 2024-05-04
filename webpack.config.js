@@ -5,7 +5,7 @@ const path = require("path");
 const ImageMinimizerWebpackPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = {
-    entry: path.join(__dirname, "src", "index.jsx"),
+    entry: path.join(__dirname, "src", "index.tsx"),
     output: {
         path: path.join(__dirname, "dist"),
         filename: "index[contenthash:8].js",
@@ -14,10 +14,15 @@ module.exports = {
     mode: "development",
     module: {
         rules: [
+            // {
+            //     test: /\.(js|jsx)$/,
+            //     exclude: /node_modules/,
+            //     use: "babel-loader",
+            // },
             {
-                test: /\.(js|jsx)$/,
+                test: /\.tsx?$/,
+                use: 'ts-loader',
                 exclude: /node_modules/,
-                use: "babel-loader",
             },
             {
                 test: /\.(scss|css)$/,
@@ -43,6 +48,9 @@ module.exports = {
                 type: "asset/resource"
             }
         ]
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
     },
     plugins: [
         new HtmlWebpackPlugin({

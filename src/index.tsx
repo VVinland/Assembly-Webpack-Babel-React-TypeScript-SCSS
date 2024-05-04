@@ -3,7 +3,7 @@ import './main.scss';
 // import logo from "./images/logo.svg"
 import './font/font.scss'
 
-function component(text) {
+function component(text:string) {
     const element = document.createElement('h1');
     element.textContent = text;
     return element;
@@ -13,10 +13,10 @@ document.body.prepend(component('Проект собран на Webpack'));
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from './components/App.jsx';
+import App from './components/App';
 
 const root = ReactDOM.createRoot(
-    document.getElementById("root")
+    document.getElementById("root") as HTMLElement
 )
 
 root.render(
